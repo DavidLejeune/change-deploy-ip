@@ -50,7 +50,8 @@ strCommands = strCommands & "git diff" & vbCrlf
 strCommands = strCommands & "git checkout " & strBranch & vbCrlf
 strCommands = strCommands & "git pull origin " & strBranch & vbCrlf
 strCommands = strCommands & "rm deploy-to-ip.txt" & vbCrlf
-strCommands = strCommands & "Set-Content .\deploy-to-ip.txt " & """" & strIP & """" & vbCrlf
+'strCommands = strCommands & "Set-Content .\deploy-to-ip.txt " & """" & strIP & """" & vbCrlf
+strCommands = strCommands & "cp " & strCurDir & "deploy-to-ip.txt .\"  & vbCrlf
 strCommands = strCommands & "git add ." & vbCrlf
 strCommands = strCommands & "git commit -a -m " & """" & "Deployment ip is now " & strIP & """" & vbCrlf
 strCommands = strCommands & "git push origin " & strBranch & vbCrlf
@@ -134,10 +135,10 @@ WScript.StdIn.Read(0)
 strInput = WScript.StdIn.ReadLine()
 
 
-wscript.echo ""
-WScript.StdOut.Write("What is the new ip address to deploy to and press [ENTER] > ")
-WScript.StdIn.Read(0)
-strIP = WScript.StdIn.ReadLine()
+' wscript.echo ""
+' WScript.StdOut.Write("What is the new ip address to deploy to and press [ENTER] > ")
+' WScript.StdIn.Read(0)
+' strIP = WScript.StdIn.ReadLine()
 
 strCommands = ""
 Select Case strInput
